@@ -46,11 +46,14 @@ def download_video():
             # Extract available formats
             available_formats = []
             for f in formats:
-                available_formats.append({
+                format_info = {
                     'format': f.get('format'),
                     'url': f.get('url'),
                     'filesize': f.get('filesize'),
-                })
+                    'acodec': f.get('acodec'),  # Audio codec
+                    'vcodec': f.get('vcodec'),  # Video codec
+                }
+                available_formats.append(format_info)
 
             # Return the video details and formats
             return jsonify({
